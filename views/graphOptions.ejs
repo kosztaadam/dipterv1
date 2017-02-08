@@ -1,0 +1,37 @@
+<div class="page-header"></div>
+<h4>Graph options</h4>
+
+<div class="col-sm-3">
+    <label for="fisheye_effect">Fisheye effect:</label>
+    <input id="fisheye_effect" type="checkbox" data-toggle="toggle">
+</div>
+
+<div class="col-sm-3">
+    <label for="highlight_effect">Highlight effect:</label>
+    <input id="highlight_effect" type="checkbox" data-toggle="toggle">
+</div>
+
+<script>
+    $(function () {
+        $('#fisheye_effect').change(function () {
+            if ($(this).prop('checked')) {
+                $('#highlight_effect').prop('checked', false).change();
+                addEffect(true, false);
+            }
+            else
+                addEffect(false, false);
+        })
+    })
+
+    $(function () {
+        $('#highlight_effect').change(function () {
+            if ($(this).prop('checked')) {
+                $('#fisheye_effect').prop('checked', false).change();
+                addEffect(false, true);
+            }
+            else
+                addEffect(false, false);
+        })
+    })
+
+</script>

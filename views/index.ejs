@@ -1,0 +1,35 @@
+<% include header %>
+
+<div class="container">
+
+    <% include searchbar %>
+
+    <div class="row">
+
+        <div class="col-sm-7">
+            <h1 id="artistname"><%= artist %></h1>
+        </div>
+
+        <div class="col-sm-5">
+            <h2>Similar artists graph</h2>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-7" id="artistinfo">
+            <% include artistInfo %>
+        </div>
+
+        <div class="col-sm-5" id="artistgraph">
+            <% include artistGraph %>
+        </div>
+    </div>
+
+    <div class="row">
+        <% include graphOptions %>
+    </div>
+
+</div>
+
+<% include footer %>
