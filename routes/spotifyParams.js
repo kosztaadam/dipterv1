@@ -2,10 +2,11 @@
  * Created by Koszta Ádám on 2017. 02. 08..
  */
 
-var spotifyGetAlbum = require('../middleware/spotifyGetAlbum');
+var spotifyGetArtistTopTrack = require('../middleware/spotifyGetArtistTopTrack');
 var spotifyAuth = require('../middleware/spotifyAuth');
 var spotifySearchItem = require('../middleware/spotifySearchItem');
 var spotifyRender = require('../middleware/spotifyRender');
+var spotifyGetArtistAlbums = require('../middleware/spotifyGetArtistAlbums');
 
 module.exports = function (app) {
 
@@ -19,7 +20,8 @@ module.exports = function (app) {
         },
         spotifyAuth(),
         spotifySearchItem(),
-        spotifyGetAlbum(),
+        spotifyGetArtistTopTrack(),
+        spotifyGetArtistAlbums(),
         spotifyRender()
     );
 
