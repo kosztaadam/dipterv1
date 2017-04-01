@@ -29,6 +29,8 @@ app.use(function (err, req, res, next) {
     console.error(err.stack);
 });
 
+app.use('/wireframe', express.static('wireframe'));
+
 var server = app.listen(5000, function () {
 	console.log('server listen: localhost:5000')
 });

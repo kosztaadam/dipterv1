@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zene adatbázis</title>
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Zene adatbázis</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Kezdő</a></li>
+            <li><a href="#">Előadók</a></li>
+            <li><a href="#">Zeneszámok</a></li>
+            <li><a href="#">Címkék</a></li>
+            <li><a href="#">...</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row " style="height: 200px; background-color: darkgray; text-align: center">
+        <h2>Szűrők</h2>
+        <div class="col-md-6">
+            <h3>Előadóval kapcsolatos szűrők</h3>
+            <div class="col-md-4">Keresett előadó: <input type="text"></div>
+            <div class="col-md-4">Hasonló előadók: <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select></div>
+            <div class="col-md-4">Keresési mélység: <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select></div>
+        </div>
+        <div class="col-md-6">
+            <h3>Gráffal kapcsolatos szűrők</h3>
+            Halszem effekt: <label class="btn btn-default active toggle-off">Off</label>
+            Kiemelési effekt: <label class="btn btn-default active toggle-off">Off</label>
+        </div>
+
+    </div>
+    <div class="row" style="height: 400px; background-color: lightgray; text-align: center; margin-top: 20px">
+        <h2>Adatok</h2>
+        <div class="col-md-4">
+            <img src="https://lastfm-img2.akamaized.net/i/u/300x300/26d5ba9edaedf723f0ec6ef2f99878c5.png" alt="">
+        </div>
+        <div class="col-md-4 text-left">
+            Top album: ... <br/>
+            Top számok: ... <br/>
+            Lejátszás: ... <br/>
+            Hallgatók: ... <br/>
+            További adatok (spotify és last.fm-ről)<br/><br/><br/><br/><br/><br/>
+            <div style="border-style: solid; border-width: 1px; padding: 30px;">Legismertebb szám lejátszás (spotify)
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height: 500px; background-color: darkgray; text-align: center; margin-top: 20px">
+        <h2>Gráf</h2>
+    </div>
+    <div class="row" style="height: 200px; margin-top: 20px; background-color: lightgray; text-align: center; ">
+        <h2>Lejátszási ablak</h2>
+        A válaszott előadó/szám/album lejátszása? Spotify, youtube...
+    </div>
+    <div class="row text-center" style="margin: 20px -15px 20px; background-color: darkgray;">
+        Copyright...
+    </div>
+
+</div>
+
+</body>
+</html>
