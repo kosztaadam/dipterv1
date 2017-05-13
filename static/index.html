@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zene adatbázis</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/graph.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/renderGraph.js"></script>
+    <script src="js/fisheye.js"></script>
+    <script src="js/renderGraph.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Zenei adatbázis</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Előadók</a></li>
+            <li><a href="#">Zeneszámok</a></li>
+            <li><a href="#">Címkék</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="graph">
+                <h2>Gráf</h2>
+                <div id="svg">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 details">
+            <div class="filters">
+                <h2 class="text-center">Szűrők</h2>
+                <div class="col-md-12 search-filter">
+                    <h3>Előadő keresés</h3>
+                    <div class="col-md-4">Keresett előadó: <input type="text"></div>
+                    <div class="col-md-2 col-md-offset-1">Hasonló: <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select></div>
+                    <div class="col-md-2">Mélység: <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-md-12 search-filter">
+                    <h3>Gráf beállítások</h3>
+                    <div class="col-md-12">
+                        Halszem effekt: <label class="btn btn-default active toggle-off">Off</label>
+                        Kiemelési effekt: <label class="btn btn-default active toggle-off">Off</label>
+                        <br/><br/>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12 artist-details">
+                <h2>Adatok</h2>
+                <div class="col-md-5">
+                    <img src="https://lastfm-img2.akamaized.net/i/u/300x300/26d5ba9edaedf723f0ec6ef2f99878c5.png"
+                         width="100%"
+                         alt="">
+                </div>
+                <div class="col-md-7" id="details">
+                </div>
+            </div>
+
+            <div class="col-md-12 play">
+                <h2>Lejátszási ablak</h2>
+                <div id="spotify"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+
+    </div>
+</div>
+
+<script src="bundle.js"></script>
+</body>
+</html>

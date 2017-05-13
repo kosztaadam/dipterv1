@@ -1,0 +1,28 @@
+.graph {
+    background-color: lightgray;
+    text-align: center;
+    height: 700px;
+}
+
+.graph h2 {
+    padding-top: 20px;
+}
+
+.search-filter {
+    background-color: #eeeeee;
+}
+
+.filters {
+    background-color: #eeeeee;
+}
+
+.artist-details {
+    background-color: #9d9d9d;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.play {
+    background-color: #9d9d9d;
+    margin-top: 10px;
+}

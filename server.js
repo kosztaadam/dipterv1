@@ -4,8 +4,13 @@ var bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
 
+//app.set('views', __dirname + '/views');
+//app.set('view engine', 'jsx');
+//app.engine('jsx', require('express-react-views').createEngine());
+
 // Kliens oldali css es js-ek miatt
 app.use(express.static('static'));
+//app.use(express.static('views'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -29,6 +34,7 @@ app.use(function (err, req, res, next) {
     console.error(err.stack);
 });
 
+// App wireframe
 app.use('/wireframe', express.static('wireframe'));
 
 var server = app.listen(5000, function () {

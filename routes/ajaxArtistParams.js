@@ -30,7 +30,7 @@ module.exports = function (app) {
     app.get('/json/artist/:artist', function (req, res, next) {
             res.tpl.artist = req.params.artist;
             res.tpl.limit = 3;
-            res.tpl.deep = 1;
+            res.tpl.deep = 3;
             return next();
         },
         authMW(),
