@@ -52,9 +52,10 @@ module.exports = function () {
 
             var path;
 
-            if(most.name.includes("'") || most.name.includes('"')) {
+            if(most.name.includes("'") || most.name.includes('"') || most.name.includes('/')) {
                 var temp_most_name = most.name.replace("'", "_");
                 temp_most_name = temp_most_name.replace('"', "_");
+                temp_most_name = temp_most_name.replace('/', "_");
                 path = './cache/' + temp_most_name + '_' + limit + '.json';
             }
             else

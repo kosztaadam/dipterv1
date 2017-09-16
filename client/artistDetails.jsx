@@ -10,6 +10,7 @@ var Detail = React.createClass({
             entries: []
         };
     },
+
     componentDidMount: function () {
         $.get('/json/artist/The Killers', function (res) {
                 var parsedRes = JSON.parse(res);
@@ -19,6 +20,10 @@ var Detail = React.createClass({
                 this.setState({artist, topAlbum, entries: similarArtist.nodes});
             }.bind(this)
         )
+    },
+
+    shouldComponentUpdate: function (artist) {
+        this.state.artist = artist;
     },
 
     onFv: function () {
@@ -50,3 +55,4 @@ var Detail = React.createClass({
 });
 
 ReactDOM.render(<Detail />, document.getElementById('details'));
+export default artistDetails;
