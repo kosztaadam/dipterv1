@@ -3,7 +3,7 @@
  */
 
 var LastfmAPI = require('lastfmapi');
-var config = require('../config/config');
+var config = require('../../config/config');
 
 module.exports = function () {
 

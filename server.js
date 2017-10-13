@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('static'));
 //app.use(express.static('views'));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
@@ -22,10 +22,10 @@ app.use(function (req, res, next) {
     return next();
 });
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var allowedOrigins = ['http://127.0.0.1:5000', 'http://localhost:5000', 'http://127.0.0.1:3000', 'http://localhost:3000'];
     var origin = req.headers.origin;
-    if(allowedOrigins.indexOf(origin) > -1){
+    if (allowedOrigins.indexOf(origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
     //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
@@ -39,6 +39,7 @@ require('./routes/main')(app);
 require('./routes/artistParams')(app);
 require('./routes/ajaxArtistParams')(app);
 require('./routes/spotifyParams')(app);
+require('./routes/youtubeParams')(app);
 
 app.use(function (err, req, res, next) {
     res.status(500).send('Houston, we have a problem!');
@@ -51,5 +52,5 @@ app.use(function (err, req, res, next) {
 app.use('/wireframe', express.static('wireframe'));
 
 var server = app.listen(5000, function () {
-	console.log('server listen: localhost:5000')
+    console.log('server listen: localhost:5000')
 });
