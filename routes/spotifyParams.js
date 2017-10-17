@@ -7,6 +7,7 @@ var spotifyAuth = require('../middleware/spotify/spotifyAuth');
 var spotifySearchItem = require('../middleware/spotify/spotifySearchItem');
 var spotifyRender = require('../middleware/spotify/spotifyRender');
 var spotifyGetArtistAlbums = require('../middleware/spotify/spotifyGetArtistAlbums');
+var spotifyGetArtist = require('../middleware/spotify/spotifyGetArtst');
 
 module.exports = function (app) {
 
@@ -23,6 +24,7 @@ module.exports = function (app) {
         },
         spotifyAuth(),
         spotifySearchItem(),
+        spotifyGetArtist(),
         spotifyGetArtistTopTrack(),
         spotifyGetArtistAlbums(),
         spotifyRender()
