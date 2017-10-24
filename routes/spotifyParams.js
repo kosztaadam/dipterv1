@@ -11,7 +11,7 @@ var spotifyGetArtist = require('../middleware/artist/spotify/spotifyGetArtst');
 
 var lastFmSearchAlbumMW = require('../middleware/album/lastFm/searchAlbum');
 var lastFmAuthMW = require('../middleware/auth/lastFmAuth');
-var spotifyGetArtistAlbums = require('../middleware/album/spotify/spotifyGetArtistAlbums');
+var spotifyGetAlbums = require('../middleware/album/spotify/spotifyGetArtistAlbums');
 var spotifyGetAlbum = require('../middleware/album/spotify/spotifyGetAlbum');
 
 var spotifyAlbumRender = require('../middleware/album/spotify/spotifyAlbumRender');
@@ -24,7 +24,6 @@ module.exports = function (app) {
 
     app.get('/spotify/:artist', function (req, res, next) {
             //res.tpl.artist = "The Killers";
-            console.log("Spotify");
             console.log(req.params.artist);
             res.tpl.artist = req.params.artist;
             return next();
@@ -52,7 +51,7 @@ module.exports = function (app) {
         spotifyAuth(),
         spotifySearchItem(),
         spotifyGetArtist(),
-        spotifyGetArtistAlbums(),
+        spotifyGetAlbums(),
         spotifyGetAlbum(),
         spotifyAlbumRender()
     );
@@ -70,7 +69,7 @@ module.exports = function (app) {
         spotifyAuth(),
         spotifySearchItem(),
         spotifyGetArtist(),
-        spotifyGetArtistAlbums(),
+        spotifyGetAlbums(),
         function (req, res, next) {
             if(res.tpl.albumid === undefined || res.tpl.playlistid !== undefined) {
 

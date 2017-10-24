@@ -44,11 +44,25 @@ module.exports = function (app) {
         renderMW()
     );
 
+    app.get('/json/artist/:artist/:similar/:depth', function (req, res, next) {
+            res.tpl.artist = req.params.artist;
+            res.tpl.limit = req.params.similar;
+            res.tpl.deep = req.params.depth;
+            return next();
+        },
+        authMW(),
+        getArtistInfoMW(),
+        getTopAlbumMW(),
+        getTopTracksMW(),
+        getSimilarMW(),
+        renderMW()
+    );
+
     app.get('/json/album/:artist/:album', function (req, res, next) {
             res.tpl.album = req.params.album;
             res.tpl.artist = req.params.artist;
-            res.tpl.limit = 3;
-            res.tpl.deep = 3;
+            //res.tpl.limit = 3;
+            //res.tpl.deep = 3;
             return next();
         },
         authMW(),
@@ -58,8 +72,8 @@ module.exports = function (app) {
 
     app.get('/json/album/:album', function (req, res, next) {
             res.tpl.album = req.params.album;
-            res.tpl.limit = 3;
-            res.tpl.deep = 3;
+           // res.tpl.limit = 3;
+            //res.tpl.deep = 3;
             return next();
         },
         authMW(),
