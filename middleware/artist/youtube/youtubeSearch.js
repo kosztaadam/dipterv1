@@ -8,7 +8,13 @@ module.exports = function () {
 
         var limit = 20;
 
-        res.tpl.youTube.search(res.tpl.artist, limit, function (error, result) {
+        var searchItem = res.tpl.artist;
+
+        if(res.tpl.album !== undefined) {
+            searchItem += " " + res.tpl.album;
+        }
+
+        res.tpl.youTube.search(searchItem, limit, function (error, result) {
             if (error) {
                 console.log(error);
             }
@@ -26,8 +32,7 @@ module.exports = function () {
 
                 while (res.tpl.trackid === undefined) {
                     res.tpl.trackid = res.tpl.youtubeDetails.items[offset].id.videoId;
-                    console.log(res.tpl.youtubeDetails.items[offset].id);
-                    console.log("bejott");
+                    console.log("while");
                     offset++;
                     if (offset === limit || res.tpl.trackid !== undefined) {
                         return next();

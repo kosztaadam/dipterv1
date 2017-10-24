@@ -2,11 +2,11 @@
  * Created by Koszta Ádám on 2016. 04. 01..
  */
 
-var authMW = require('../middleware/lastFm/auth');
-var getSimilarMW = require('../middleware/lastFm/getSimilar');
-var getArtistInfoMW = require('../middleware/lastFm/getArtistInfo');
-var getTopAlbumMW = require('../middleware/lastFm/getTopAlbum');
-var getTopTracksMW = require('../middleware/lastFm/getTopTracks');
+var authMW = require('../middleware/auth/lastFmAuth');
+var getSimilarMW = require('../middleware/artist/lastFm/getSimilar');
+var getArtistInfoMW = require('../middleware/artist/lastFm/getArtistInfo');
+var getTopAlbumMW = require('../middleware/artist/lastFm/getTopAlbum');
+var getTopTracksMW = require('../middleware/artist/lastFm/getTopTracks');
 
 var renderMW = require('../middleware/render');
 

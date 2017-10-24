@@ -8,7 +8,7 @@ module.exports = function (viewName) {
     return function (req, res) {
 
         // Set page title
-       res.tpl.pageTitle = res.tpl.artist;
+       //res.tpl.pageTitle = res.tpl.artist;
 
        //res.render('test', res.tpl);
 
@@ -27,7 +27,7 @@ module.exports = function (viewName) {
                 simpleObject[prop] = object[prop];
             }
             return JSON.stringify(simpleObject); // returns cleaned up JSON
-        };
+        }
 
         var response = simpleStringify(res.tpl);
 

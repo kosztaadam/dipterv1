@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
 
 require('./routes/main')(app);
 require('./routes/artistParams')(app);
-require('./routes/ajaxArtistParams')(app);
+require('./routes/ajaxLastFmParams')(app);
 require('./routes/spotifyParams')(app);
 require('./routes/youtubeParams')(app);
 

@@ -21,6 +21,7 @@ module.exports = function () {
                 return console.log('We\'re in trouble in getArtistInfo', err);
             }
 
+            res.tpl.artistTags = JSON.stringify(artist.tags.tag);
             res.tpl.artistInfo = artist;
             res.tpl.artistImage = artist.image[3]['#text'];
             res.tpl.artistListeners = artist.stats.listeners;

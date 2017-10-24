@@ -1,14 +1,11 @@
-
 module.exports = function (viewName) {
 
     return function (req, res) {
 
         //var response = '<iframe src="https://embed.spotify.com/?uri=spotify:album:' + res.tpl.albumid + '" width="300" height="100" frameborder="0" allowtransparency="true"></iframe>';
 
-        console.log(res.tpl.trackid);
-        console.log(res.tpl.details);
         var result = JSON.stringify({
-            'trackID': res.tpl.trackid,
+            'albumID': res.tpl.albumid,
             'details': res.tpl.details
         });
 
