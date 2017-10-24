@@ -71,9 +71,23 @@ module.exports = function (app) {
         spotifySearchItem(),
         spotifyGetArtist(),
         spotifyGetArtistAlbums(),
+        function (req, res, next) {
+            if(res.tpl.albumid === undefined || res.tpl.playlistid !== undefined) {
+
+                var result = JSON.stringify({
+                    'albumID': res.tpl.playlistid,
+                    'details': res.tpl.details,
+                    'playlist': true
+                });
+
+                res.status(200).json(result);
+
+            } else {
+                return next();
+            }
+        },
         spotifyGetAlbum(),
         spotifyAlbumRender()
     );
-
 
 };
