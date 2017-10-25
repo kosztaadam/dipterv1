@@ -17,14 +17,14 @@ module.exports = function () {
                 let i = 0;
 
                 while (data.body.items[i].name.indexOf(res.tpl.album) === -1 && i < (limit - 1)) {
-                    console.log(data.body.items[i].name);
-                    console.log(res.tpl.album);
-                    console.log("*-*-*-*-*-*-*");
+                    //console.log(data.body.items[i].name);
+                    //console.log(res.tpl.album);
+                    //console.log("*-*-*-*-*-*-*");
                     i++;
                 }
 
                 if (data.body.items[i + 1] !== undefined) {
-                    console.log(data.body.items[i].name);
+                   // console.log(data.body.items[i].name);
                     res.tpl.albumid = data.body.items[i].id;
                     return next();
                 } else {
@@ -33,7 +33,7 @@ module.exports = function () {
                     spotifyApi.searchPlaylists(res.tpl.artist + " " + res.tpl.album, {limit: 1})
                         .then(function (data) {
 
-                            console.log('Found playlists are', data.body);
+                            //console.log('Found playlists are', data.body);
                             res.tpl.playlistid = data.body.playlists.items[0].external_urls.spotify;
 
                             return next();

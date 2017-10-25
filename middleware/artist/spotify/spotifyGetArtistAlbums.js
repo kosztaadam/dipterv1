@@ -13,9 +13,9 @@ module.exports = function () {
                 console.error('Something went wrong!');
                 return next();
             } else {
-                console.log("------------");
-                console.log("artist album");
-                console.log(data.body);
+                //console.log("------------");
+                //console.log("artist album");
+               // console.log(data.body);
                 //console.log(data.body.items[0].id);
                 res.tpl.albumid = data.body.items[0].id;
 

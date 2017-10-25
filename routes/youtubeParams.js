@@ -20,7 +20,7 @@ module.exports = function (app) {
         },
         youtubeAuth(),
         youtubeSearch(),
-        //youtubeGetByID(),
+        youtubeGetByID(),
         youtubeRender()
     );
 
@@ -34,7 +34,7 @@ module.exports = function (app) {
         lastFmSearchAlbumMW(),
         youtubeAuth(),
         youtubeSearch(),
-        //youtubeGetByID(),
+        youtubeGetByID(),
         youtubeRender()
     );
 

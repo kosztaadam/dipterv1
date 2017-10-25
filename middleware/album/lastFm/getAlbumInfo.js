@@ -29,7 +29,9 @@ module.exports = function () {
             res.tpl.albumPlayCount = album.playcount;
             res.tpl.albumTracks = JSON.stringify(album.tracks.track);
             res.tpl.albumTags = JSON.stringify(album.tags.tag);
-            res.tpl.wiki = album.wiki.summary;
+            if (album.wiki !== undefined) {
+                res.tpl.wiki = album.wiki.summary;
+            }
 
             return next();
         });

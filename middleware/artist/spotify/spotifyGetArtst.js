@@ -12,7 +12,7 @@ module.exports = function () {
         spotifyApi.getArtist(res.tpl.artistid)
             .then(function (data) {
                 console.log("------");
-                console.log('Artist information', data.body);
+                //console.log('Artist information', data.body);
                 res.tpl.details = data.body;
 
                 return next();

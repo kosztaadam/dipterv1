@@ -13,7 +13,7 @@ module.exports = function () {
                 console.error('Something went wrong!');
                 return next();
             } else {
-                console.log(data.body);
+               // console.log(data.body);
                 res.tpl.details = JSON.stringify(data.body);
 
                 return next();

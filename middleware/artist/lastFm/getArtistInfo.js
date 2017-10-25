@@ -26,6 +26,9 @@ module.exports = function () {
             res.tpl.artistImage = artist.image[3]['#text'];
             res.tpl.artistListeners = artist.stats.listeners;
             res.tpl.artistPlayCount = artist.stats.playcount;
+            if (artist.bio.summary !== undefined) {
+                res.tpl.wiki = artist.bio.summary;
+            }
             res.tpl.artist = artist.name;
 
             return next();

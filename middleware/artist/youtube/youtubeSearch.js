@@ -32,14 +32,12 @@ module.exports = function () {
 
                 while (res.tpl.trackid === undefined) {
                     res.tpl.trackid = res.tpl.youtubeDetails.items[offset].id.videoId;
-                    console.log("while");
+                    //console.log("while");
                     offset++;
                     if (offset === limit || res.tpl.trackid !== undefined) {
                         return next();
                     }
                 }
-
-
             }
         });
     }
