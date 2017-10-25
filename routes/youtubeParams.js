@@ -24,9 +24,19 @@ module.exports = function (app) {
         youtubeRender()
     );
 
+    app.get('/youtube/album/:artist/:album', function (req, res, next) {
+            res.tpl.artist = req.params.artist;
+            res.tpl.album = req.params.album;
+            return next();
+        },
+        youtubeAuth(),
+        youtubeSearch(),
+        youtubeGetByID(),
+        youtubeRender()
+    );
+
 
     app.get('/youtube/album/:album', function (req, res, next) {
-            console.log("Youtube");
             res.tpl.album = req.params.album;
             return next();
         },

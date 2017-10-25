@@ -18,7 +18,7 @@ module.exports = function () {
             'limit': 1
         }, function (err, album) {
             if (err) {
-                return console.log('We\'re in trouble in getAlbumInfo', err);
+                return console.log('We\'re in trouble in searchAlbum', err);
             }
 
             res.tpl.album = album.albummatches.album[0].name;

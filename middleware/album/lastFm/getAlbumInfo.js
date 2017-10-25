@@ -23,7 +23,7 @@ module.exports = function () {
                 return console.log('We\'re in trouble in getAlbumInfo', err);
             }
 
-            res.tpl.albumDetails = JSON.stringify(album);
+            //res.tpl.albumDetails = JSON.stringify(album);
             res.tpl.albumImage = album.image[3]['#text'];
             res.tpl.albumListeners = album.listeners;
             res.tpl.albumPlayCount = album.playcount;

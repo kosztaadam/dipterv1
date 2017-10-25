@@ -11,6 +11,10 @@ var getTopTracksMW = require('../middleware/artist/lastFm/getTopTracks');
 var getAlbumInfoMW = require('../middleware/album/lastFm/getAlbumInfo');
 var searchAlbumMW = require('../middleware/album/lastFm/searchAlbum');
 
+var searchTrackMW = require('../middleware/track/lastFm/searchTrack');
+var getTrackInfoMW = require('../middleware/track/lastFm/getTrackInfo');
+var getSimilarTrackMW = require('../middleware/track/lastFm/getSimilarTrack');
+
 var renderMW = require('../middleware/render');
 
 
@@ -29,6 +33,10 @@ module.exports = function (app) {
         getSimilarMW(),
         renderMW('artistInfo')
     );
+
+    /*
+     Artist
+     */
 
     app.get('/json/artist/:artist', function (req, res, next) {
             res.tpl.artist = req.params.artist;
@@ -58,6 +66,10 @@ module.exports = function (app) {
         renderMW()
     );
 
+    /*
+     Album
+     */
+
     app.get('/json/album/:artist/:album', function (req, res, next) {
             res.tpl.album = req.params.album;
             res.tpl.artist = req.params.artist;
@@ -72,7 +84,7 @@ module.exports = function (app) {
 
     app.get('/json/album/:album', function (req, res, next) {
             res.tpl.album = req.params.album;
-           // res.tpl.limit = 3;
+            // res.tpl.limit = 3;
             //res.tpl.deep = 3;
             return next();
         },
@@ -82,5 +94,60 @@ module.exports = function (app) {
         renderMW()
     );
 
+    /*
+     Track
+     */
+
+    app.get('/json/track/:track', function (req, res, next) {
+            res.tpl.track = req.params.track;
+            res.tpl.limit = 3;
+            res.tpl.deep = 3;
+            return next();
+        },
+        authMW(),
+        searchTrackMW(),
+        getTrackInfoMW(),
+        getSimilarTrackMW(),
+        renderMW()
+    );
+
+    app.get('/json/track/:track/:similar/:depth', function (req, res, next) {
+            res.tpl.track = req.params.track;
+            res.tpl.limit = req.params.similar;
+            res.tpl.deep = req.params.depth;
+            return next();
+        },
+        authMW(),
+        searchTrackMW(),
+        getTrackInfoMW(),
+        getSimilarTrackMW(),
+        renderMW()
+    );
+
+    app.get('/json/track/:artist/:track', function (req, res, next) {
+            res.tpl.track = req.params.track;
+            res.tpl.artist = req.params.artist;
+            res.tpl.limit = 3;
+            res.tpl.deep = 3;
+            return next();
+        },
+        authMW(),
+        getTrackInfoMW(),
+        getSimilarTrackMW(),
+        renderMW()
+    );
+
+    app.get('/json/track/:artist/:track/:similar/:depth', function (req, res, next) {
+            res.tpl.track = req.params.track;
+            res.tpl.artist = req.params.artist;
+            res.tpl.limit = req.params.similar;
+            res.tpl.deep = req.params.depth;
+            return next();
+        },
+        authMW(),
+        getTrackInfoMW(),
+        getSimilarTrackMW(),
+        renderMW()
+    );
 
 };
