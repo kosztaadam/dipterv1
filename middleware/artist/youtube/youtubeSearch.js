@@ -14,6 +14,10 @@ module.exports = function () {
             searchItem += " " + res.tpl.album;
         }
 
+        if(res.tpl.track !== undefined) {
+            searchItem += " " + res.tpl.track;
+        }
+
         res.tpl.youTube.search(searchItem, limit, function (error, result) {
             if (error) {
                 console.log(error);

@@ -7,7 +7,7 @@ var spotifyAuth = require('../middleware/auth/spotifyAuth');
 var spotifySearchItem = require('../middleware/artist/spotify/spotifySearchItem');
 var spotifyRender = require('../middleware/artist/spotify/spotifyRender');
 var spotifyGetArtistAlbums = require('../middleware/artist/spotify/spotifyGetArtistAlbums');
-var spotifyGetArtist = require('../middleware/artist/spotify/spotifyGetArtst');
+var spotifyGetArtist = require('../middleware/artist/spotify/spotifyGetArtist');
 
 var lastFmSearchAlbumMW = require('../middleware/album/lastFm/searchAlbum');
 var lastFmAuthMW = require('../middleware/auth/lastFmAuth');
@@ -15,6 +15,11 @@ var spotifyGetAlbums = require('../middleware/album/spotify/spotifyGetArtistAlbu
 var spotifyGetAlbum = require('../middleware/album/spotify/spotifyGetAlbum');
 
 var spotifyAlbumRender = require('../middleware/album/spotify/spotifyAlbumRender');
+
+var getTrackInfoMW = require('../middleware/track/spotify/spotifyGetTrack');
+var spotifySearchTrack = require('../middleware/track/spotify/spotifySearchArtistTrack');
+var lastFmSearchTrackMW = require('../middleware/track/lastFm/searchTrack');
+
 
 module.exports = function (app) {
 
@@ -71,7 +76,7 @@ module.exports = function (app) {
         spotifyGetArtist(),
         spotifyGetAlbums(),
         function (req, res, next) {
-            if(res.tpl.albumid === undefined || res.tpl.playlistid !== undefined) {
+            if (res.tpl.albumid === undefined || res.tpl.playlistid !== undefined) {
 
                 var result = JSON.stringify({
                     'albumID': res.tpl.playlistid,
@@ -87,6 +92,37 @@ module.exports = function (app) {
         },
         spotifyGetAlbum(),
         spotifyAlbumRender()
+    );
+
+    /**
+     * Szam lekerdezese Spotifyn
+     */
+
+    app.get('/spotify/track/:artist/:track', function (req, res, next) {
+            res.tpl.track = req.params.track;
+            res.tpl.artist = req.params.artist;
+            return next();
+        },
+        spotifyAuth(),
+        spotifySearchTrack(),
+        getTrackInfoMW(),
+        spotifyRender()
+    );
+
+    /**
+     * Szam lekerdezese Spotifyn
+     */
+
+    app.get('/spotify/track/:track', function (req, res, next) {
+            res.tpl.track = req.params.track;
+            return next();
+        },
+        lastFmAuthMW(),
+        lastFmSearchTrackMW(),
+        spotifyAuth(),
+        spotifySearchTrack(),
+        getTrackInfoMW(),
+        spotifyRender()
     );
 
 };

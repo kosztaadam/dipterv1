@@ -87,16 +87,17 @@ module.exports = function () {
                 });
 
             } catch (e) {
+
                 // It isn't accessible
                 //console.log("No cache");
                 lfm.track.getSimilar({
-                    'artist': res.tpl.artist,
+                    'artist': most.artist.name,
                     'track': most.name,
                     'limit': limit
 
                 }, function (err, similarTracks) {
                     if (err) {
-                        return console.log('We\'re in trouble', err);
+                        return console.log('We\'re in trouble SimilarTrack', err);
                     }
 
                     hasonlolista[most.name] = {};
@@ -140,20 +141,21 @@ module.exports = function () {
         goDeep(function () {
             //ez itt a ki kihez lista
 
-            var similarArtistList = {
+            var similarTracktList = {
                 nodes: [],
                 links: []
             };
 
             for (var item in hasonlolista) {
-                similarArtistList.nodes.push({
+                similarTracktList.nodes.push({
                     "id": item,
+                    "artist" : hasonlolista[item].similarTrack[0].artist.name,
                     "group": hasonlolista[item].group
                 });
 
                 hasonlolista[item].similarTrack.forEach(function (itemList) {
                     if (alreadyProcessedNames.indexOf(itemList.name) != -1) {
-                        similarArtistList.links.push({
+                        similarTracktList.links.push({
                             "source": item,
                             "target": itemList.name,
                             "value": 3
@@ -170,8 +172,8 @@ module.exports = function () {
                 }
             }
 
-            //console.log(similarArtistList);
-            res.tpl.similarTrack = JSON.stringify(similarArtistList);
+            //console.log(similarTracktList);
+            res.tpl.similarTrack = JSON.stringify(similarTracktList);
 
             return next();
         });

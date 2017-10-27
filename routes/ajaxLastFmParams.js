@@ -112,6 +112,7 @@ module.exports = function (app) {
     );
 
     app.get('/json/track/:track/:similar/:depth', function (req, res, next) {
+           // console.log("csak track similar depth");
             res.tpl.track = req.params.track;
             res.tpl.limit = req.params.similar;
             res.tpl.deep = req.params.depth;
@@ -125,6 +126,7 @@ module.exports = function (app) {
     );
 
     app.get('/json/track/:artist/:track', function (req, res, next) {
+           // console.log("artist track");
             res.tpl.track = req.params.track;
             res.tpl.artist = req.params.artist;
             res.tpl.limit = 3;
@@ -138,6 +140,7 @@ module.exports = function (app) {
     );
 
     app.get('/json/track/:artist/:track/:similar/:depth', function (req, res, next) {
+          //  console.log("artist track similar depth");
             res.tpl.track = req.params.track;
             res.tpl.artist = req.params.artist;
             res.tpl.limit = req.params.similar;
