@@ -31,9 +31,6 @@ module.exports = function (viewName) {
 
         var response = simpleStringify(res.tpl);
 
-        console.log(res.tpl.artist);
-        console.log(res.tpl.track);
-
         //console.log(response);
 
        // console.log(res.tpl);

@@ -15,6 +15,12 @@ var searchTrackMW = require('../middleware/track/lastFm/searchTrack');
 var getTrackInfoMW = require('../middleware/track/lastFm/getTrackInfo');
 var getSimilarTrackMW = require('../middleware/track/lastFm/getSimilarTrack');
 
+var getTagTopArtistMW = require('../middleware/tag/lastFm/getTopArtists');
+var getTagInfoMW = require('../middleware/tag/lastFm/getTag');
+var getTagTopTracksMW = require('../middleware/tag/lastFm/getTopTracks');
+var getSimilarTagMW = require('../middleware/tag/lastFm/getSimilarTag');
+
+
 var renderMW = require('../middleware/render');
 
 
@@ -112,7 +118,7 @@ module.exports = function (app) {
     );
 
     app.get('/json/track/:track/:similar/:depth', function (req, res, next) {
-           // console.log("csak track similar depth");
+            // console.log("csak track similar depth");
             res.tpl.track = req.params.track;
             res.tpl.limit = req.params.similar;
             res.tpl.deep = req.params.depth;
@@ -126,7 +132,7 @@ module.exports = function (app) {
     );
 
     app.get('/json/track/:artist/:track', function (req, res, next) {
-           // console.log("artist track");
+            // console.log("artist track");
             res.tpl.track = req.params.track;
             res.tpl.artist = req.params.artist;
             res.tpl.limit = 3;
@@ -140,7 +146,7 @@ module.exports = function (app) {
     );
 
     app.get('/json/track/:artist/:track/:similar/:depth', function (req, res, next) {
-          //  console.log("artist track similar depth");
+            //  console.log("artist track similar depth");
             res.tpl.track = req.params.track;
             res.tpl.artist = req.params.artist;
             res.tpl.limit = req.params.similar;
@@ -150,6 +156,22 @@ module.exports = function (app) {
         authMW(),
         getTrackInfoMW(),
         getSimilarTrackMW(),
+        renderMW()
+    );
+
+    /*
+     Cimke, tag
+     */
+
+    app.get('/json/tag/:tag', function (req, res, next) {
+            res.tpl.tag = req.params.tag;
+            return next();
+        },
+        authMW(),
+        getTagInfoMW(),
+        getTagTopArtistMW(),
+        getTagTopTracksMW(),
+        getSimilarTagMW(),
         renderMW()
     );
 
