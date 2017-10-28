@@ -28,8 +28,10 @@ module.exports = function () {
             res.tpl.duration = track.duration;
             res.tpl.listeners = track.listeners;
             res.tpl.playcount = track.playcount;
-            res.tpl.image = track.album.image[3]['#text'];
-            res.tpl.album = track.album.title;
+            if (track.album !== undefined) {
+                res.tpl.image = track.album.image[3]['#text'];
+                res.tpl.album = track.album.title;
+            }
 
             res.tpl.tags = JSON.stringify(track.toptags.tag);
             if (track.wiki !== undefined) {

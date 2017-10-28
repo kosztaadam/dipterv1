@@ -52,10 +52,14 @@ module.exports = function () {
 
             var path;
 
-            if(most.name.includes("'") || most.name.includes('"') || most.name.includes('/')) {
+            if (most.name.includes("'") || most.name.includes('"') || most.name.includes('/') || most.name.includes('?') || most.name.includes(' ') || most.name.includes('(') || most.name.includes(')')) {
                 var temp_most_name = most.name.replace("'", "_");
                 temp_most_name = temp_most_name.replace('"', "_");
                 temp_most_name = temp_most_name.replace('/', "_");
+                temp_most_name = temp_most_name.replace('?', "_");
+                temp_most_name = temp_most_name.replace(' ', "_");
+                temp_most_name = temp_most_name.replace('(', "_");
+                temp_most_name = temp_most_name.replace(')', "_");
                 path = './cache/track/' + temp_most_name + '_' + limit + '.json';
             }
             else
@@ -147,6 +151,9 @@ module.exports = function () {
             };
 
             for (var item in hasonlolista) {
+                if(hasonlolista[item].similarTrack[0] === undefined) {
+                    return;
+                }
                 similarTracktList.nodes.push({
                     "id": item,
                     "artist" : hasonlolista[item].similarTrack[0].artist.name,

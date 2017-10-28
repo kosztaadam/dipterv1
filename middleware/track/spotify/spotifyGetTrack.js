@@ -15,6 +15,8 @@ module.exports = function () {
                 //console.log('Track information', data.body);
                 res.tpl.details = data.body;
 
+                res.tpl.album = data.body.album.id;
+
                 return next();
             }, function (err) {
                 console.error(err);

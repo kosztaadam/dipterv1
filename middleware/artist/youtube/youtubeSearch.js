@@ -10,12 +10,21 @@ module.exports = function () {
 
         var searchItem = res.tpl.artist;
 
+        if(res.tpl.artist !== undefined) {
+            searchItem = res.tpl.artist;
+        }
+
         if(res.tpl.album !== undefined) {
             searchItem += " " + res.tpl.album;
         }
 
         if(res.tpl.track !== undefined) {
             searchItem += " " + res.tpl.track;
+        }
+
+        if(res.tpl.topTagTracks !== undefined) {
+            let temp = JSON.parse(res.tpl.topTagTracks)[0];
+            searchItem = temp.artist + " " + temp.track;
         }
 
         res.tpl.youTube.search(searchItem, limit, function (error, result) {

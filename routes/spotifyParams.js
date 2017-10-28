@@ -20,6 +20,10 @@ var getTrackInfoMW = require('../middleware/track/spotify/spotifyGetTrack');
 var spotifySearchTrack = require('../middleware/track/spotify/spotifySearchArtistTrack');
 var lastFmSearchTrackMW = require('../middleware/track/lastFm/searchTrack');
 
+var getTagTopArtistMW = require('../middleware/tag/lastFm/getTopArtists');
+var getTagTopTracksMW = require('../middleware/tag/lastFm/getTopTracks');
+var spotifySearchTag = require('../middleware/tag/spotify/spotifySearchTag');
+var spotifyTagRender = require('../middleware/tag/spotify/spotifyTagRender');
 
 module.exports = function (app) {
 
@@ -123,6 +127,22 @@ module.exports = function (app) {
         spotifySearchTrack(),
         getTrackInfoMW(),
         spotifyRender()
+    );
+
+    /**
+     * Tag lekerdezese Spotifyn
+     */
+
+    app.get('/spotify/tag/:tag', function (req, res, next) {
+            res.tpl.tag = req.params.tag;
+            return next();
+        },
+        lastFmAuthMW(),
+        getTagTopArtistMW(),
+        getTagTopTracksMW(),
+        spotifyAuth(),
+        spotifySearchTag(),
+        spotifyTagRender()
     );
 
 };

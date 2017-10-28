@@ -8,6 +8,9 @@ var lastFmAuthMW = require('../middleware/auth/lastFmAuth');
 
 var lastFmSearchTrackMW = require('../middleware/track/lastFm/searchTrack');
 
+var getTagTopArtistMW = require('../middleware/tag/lastFm/getTopArtists');
+var getTagTopTracksMW = require('../middleware/tag/lastFm/getTopTracks');
+
 module.exports = function (app) {
 
     /**
@@ -51,6 +54,7 @@ module.exports = function (app) {
 
     app.get('/youtube/track/:artist/:track', function (req, res, next) {
             res.tpl.track = req.params.track;
+            res.tpl.artist = req.params.artist;;
             return next();
         },
         youtubeAuth(),
@@ -61,12 +65,24 @@ module.exports = function (app) {
 
 
     app.get('/youtube/track/:track', function (req, res, next) {
-            res.tpl.artist = req.params.artist;
             res.tpl.track = req.params.track;
             return next();
         },
         lastFmAuthMW(),
         lastFmSearchTrackMW(),
+        youtubeAuth(),
+        youtubeSearch(),
+        youtubeGetByID(),
+        youtubeRender()
+    );
+
+    app.get('/youtube/tag/:tag', function (req, res, next) {
+            res.tpl.tag = req.params.tag;
+            return next();
+        },
+        lastFmAuthMW(),
+        getTagTopArtistMW(),
+        getTagTopTracksMW(),
         youtubeAuth(),
         youtubeSearch(),
         youtubeGetByID(),

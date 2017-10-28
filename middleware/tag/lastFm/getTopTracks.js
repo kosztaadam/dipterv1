@@ -46,7 +46,7 @@ module.exports = function () {
         }
 
         addTopTracks(function (topTrackList) {
-            res.tpl.topTagTracks = topTrackList;
+            res.tpl.topTagTracks = JSON.stringify(topTrackList);
             return next();
         });
     };
