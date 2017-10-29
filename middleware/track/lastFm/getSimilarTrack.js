@@ -92,6 +92,8 @@ module.exports = function () {
 
             } catch (e) {
 
+
+
                 // It isn't accessible
                 //console.log("No cache");
                 lfm.track.getSimilar({
@@ -151,8 +153,9 @@ module.exports = function () {
             };
 
             for (var item in hasonlolista) {
+               // console.log(hasonlolista[item].similarTrack[0]);
                 if(hasonlolista[item].similarTrack[0] === undefined) {
-                    return;
+                    return next();
                 }
                 similarTracktList.nodes.push({
                     "id": item,
@@ -179,7 +182,6 @@ module.exports = function () {
                 }
             }
 
-            //console.log(similarTracktList);
             res.tpl.similarTrack = JSON.stringify(similarTracktList);
 
             return next();
