@@ -22,11 +22,13 @@ module.exports = function () {
 
         lfm.setSessionCredentials(mySessionCreds.username, mySessionCreds.key);
 
-        lfm.setSessionCredentials(mySessionCreds.username, mySessionCreds.key);
+        //lfm.setSessionCredentials(mySessionCreds.username, mySessionCreds.key);
 
         //var authUrl = lfm.getAuthenticationUrl({'cb': 'http://example.com/auth'});
 
         res.tpl.lfm = lfm;
+
+        console.log(lfm);
 
         return next();
     };

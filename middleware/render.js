@@ -39,6 +39,8 @@ module.exports = function (viewName) {
 
        // console.log(response);
 
+       // response = JSON.parse(res.tpl.similarArtistsList);
+
         res.status(200).json(response);
 
         // Set Express routes.

@@ -28,9 +28,12 @@ module.exports = function () {
         var hasonlolista = [];
         var group = 0;
 
+       // var szam = 0;
+
         mit.push(res.tpl.artistInfo);
 
         function getNextItem(finalcb) {
+
             var most = null;
 
             if (mit.length > 0) {
@@ -39,7 +42,10 @@ module.exports = function () {
                 return finalcb();
             }
 
+            //szam++;
             //console.log("most: " + most.name);
+           // console.log("meghivasok szama:" + szam);
+
 
             if (alreadyProcessedNames.indexOf(most.name) != -1) {
                 setTimeout(function () {

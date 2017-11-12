@@ -51,6 +51,6 @@ app.use(function (err, req, res, next) {
 // App wireframe
 app.use('/wireframe', express.static('wireframe'));
 
-var server = app.listen(5000, function () {
-    console.log('server listen: localhost:5000')
+var server = app.listen(3000, function () {
+    console.log('server listen: localhost:3000')
 });

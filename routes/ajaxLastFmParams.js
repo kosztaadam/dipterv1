@@ -44,7 +44,7 @@ module.exports = function (app) {
      Artist
      */
 
-    app.get('/json/artist/:artist', function (req, res, next) {
+    app.get('/lastfm/artist/:artist', function (req, res, next) {
             res.tpl.artist = req.params.artist;
             res.tpl.limit = 3;
             res.tpl.deep = 2;
@@ -58,7 +58,7 @@ module.exports = function (app) {
         renderMW()
     );
 
-    app.get('/json/artist/:artist/:similar/:depth', function (req, res, next) {
+    app.get('/lastfm/artist/:artist/:similar/:depth', function (req, res, next) {
             res.tpl.artist = req.params.artist;
             res.tpl.limit = req.params.similar;
             res.tpl.deep = req.params.depth;
@@ -76,7 +76,7 @@ module.exports = function (app) {
      Album
      */
 
-    app.get('/json/album/:artist/:album', function (req, res, next) {
+    app.get('/lastfm/album/:artist/:album', function (req, res, next) {
             res.tpl.album = req.params.album;
             res.tpl.artist = req.params.artist;
             res.tpl.limit = 3;
@@ -88,7 +88,7 @@ module.exports = function (app) {
         renderMW()
     );
 
-    app.get('/json/album/:album', function (req, res, next) {
+    app.get('/lastfm/album/:album', function (req, res, next) {
             res.tpl.album = req.params.album;
             res.tpl.limit = 3;
             res.tpl.deep = 2;
@@ -104,7 +104,7 @@ module.exports = function (app) {
      Track
      */
 
-    app.get('/json/track/:track', function (req, res, next) {
+    app.get('/lastfm/track/:track', function (req, res, next) {
             res.tpl.track = req.params.track;
             res.tpl.limit = 3;
             res.tpl.deep = 2;
@@ -117,7 +117,7 @@ module.exports = function (app) {
         renderMW()
     );
 
-    app.get('/json/track/:track/:similar/:depth', function (req, res, next) {
+    app.get('/lastfm/track/:track/:similar/:depth', function (req, res, next) {
              //console.log("csak track similar depth");
 
             res.tpl.track = req.params.track;
@@ -132,7 +132,7 @@ module.exports = function (app) {
         renderMW()
     );
 
-    app.get('/json/track/:artist/:track', function (req, res, next) {
+    app.get('/lastfm/track/:artist/:track', function (req, res, next) {
             // console.log("artist track");
             res.tpl.track = req.params.track;
             res.tpl.artist = req.params.artist;
@@ -147,7 +147,7 @@ module.exports = function (app) {
         renderMW()
     );
 
-    app.get('/json/track/:artist/:track/:similar/:depth', function (req, res, next) {
+    app.get('/lastfm/track/:artist/:track/:similar/:depth', function (req, res, next) {
             //  console.log("artist track similar depth");
             res.tpl.track = req.params.track;
             res.tpl.artist = req.params.artist;
@@ -165,7 +165,7 @@ module.exports = function (app) {
      Cimke, tag
      */
 
-    app.get('/json/tag/:tag', function (req, res, next) {
+    app.get('/lastfm/tag/:tag', function (req, res, next) {
             res.tpl.tag = req. params.tag;
             res.tpl.limit = 3;
             res.tpl.deep = 2;
@@ -179,7 +179,7 @@ module.exports = function (app) {
         renderMW()
     );
 
-    app.get('/json/tag/:tag/:similar/:depth', function (req, res, next) {
+    app.get('/lastfm/tag/:tag/:similar/:depth', function (req, res, next) {
             res.tpl.tag = req. params.tag;
             res.tpl.limit = req.params.similar;
             res.tpl.deep = req.params.depth;
